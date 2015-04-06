@@ -1,18 +1,20 @@
 package com.rameezvirji.uofsnavigator;
 
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.util.Log;
 import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    public final static String SPARAMS = "com.rameezvirji.uofsnavigator.searchparams";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,8 @@ public class MainActivity extends ActionBarActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 ImageView pin = (ImageView) findViewById(R.id.pinImage);
                 pin.setVisibility(View.VISIBLE);
-                pin.setTop((int)event.getY());
-                pin.setLeft((int) event.getX());
+                pin.setTop(((int)event.getY()-150));
+                pin.setLeft(((int)event.getX()-75));
                 return true;
             }
         });
@@ -48,6 +50,14 @@ public class MainActivity extends ActionBarActivity {
         btnDown.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 map.setImageResource(R.drawable.thorv1);
+            }
+        });
+
+        // Search Button
+        final Button btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                doSearch();
             }
         });
     }
@@ -73,5 +83,13 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void doSearch() {
+        Intent intent = new Intent(this, SearchResults.class);
+        EditText searchQuery = (EditText) findViewById(R.id.txtSearch);
+        String message = searchQuery.getText().toString();
+        intent.putExtra(SPARAMS, message);
+        startActivity(intent);
     }
 }

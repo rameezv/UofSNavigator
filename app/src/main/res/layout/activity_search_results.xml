@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context="com.rameezvirji.uofsnavigator.SearchResults"
+    android:background="#ffffffff">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="67dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="#ffdddddd"
+        android:focusable="true">
+
+        <TextView android:text="Query" android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#ff2b2b2b"
+
+            android:id="@+id/sQueryDisplay"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+     <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchResults"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
