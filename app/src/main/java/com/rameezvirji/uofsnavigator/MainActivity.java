@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 moveDestNode(event.getX(), event.getY());
-                Log.d("bla", "help");
+                Log.d("OTL", "OTL fired");
                 return true;
             }
         });
@@ -53,6 +53,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void moveDestNode(float x, float y) {
         ImageView pin = (ImageView) findViewById(R.id.pinImage);
+        pin.setVisibility(View.VISIBLE);
         pin.setTop((int)y);
         pin.setLeft((int)x);
     }
