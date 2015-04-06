@@ -3,7 +3,6 @@ package com.rameezvirji.uofsnavigator;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -55,7 +54,7 @@ public class SearchResults extends ActionBarActivity {
 
        public void createArray() {
            locations = new String[1];
-           locations[0] = new String("Bob's Burgers");
+           locations[0] = "Bob's Burgers";
            addToArray("Tim Hortons");
            addToArray("Tim Robins Steak House");
            addToArray("John Cena's House of Pancakes");
@@ -73,13 +72,13 @@ public class SearchResults extends ActionBarActivity {
 
         public void populateList() {
             ListView resultList = (ListView) findViewById(R.id.searchResults);
-            ArrayList<String> results = new ArrayList<String>();
+            ArrayList<String> results = new ArrayList<>();
             for (int i=0; i<locations.length; i++) {
                 if (locations[i].toLowerCase().contains(query.toLowerCase())) {
                     results.add(locations[i]);
                 }
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, results);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, results);
             resultList.setAdapter(adapter);
         }
 

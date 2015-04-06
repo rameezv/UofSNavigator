@@ -6,9 +6,8 @@ package com.rameezvirji.uofsnavigator;
 public class LocationMap {
     public float x;
     public float y;
-    public String name;
 
-    public LocationMap(String namev, float xv, float yv) {
+    public LocationMap(float xv, float yv) {
         this.x = xv;
         this.y = yv;
     }
