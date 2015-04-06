@@ -3,13 +3,22 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/main"
+    tools:context=".MainActivity">
 
     <view
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:src="@drawable/thorv2"
     class="com.rameezvirji.uofsnavigator.TouchImageView"
-    android:id="@+id/view" />
+    android:id="@+id/mapview" />
+
+    <ImageView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:src="@drawable/pin"
+    android:id="@+id/pinImage"
+        android:scaleType="matrix" />
 
 </RelativeLayout>

@@ -4,6 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.util.Log;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -11,12 +16,16 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        TouchImageView img = new TouchImageView(this);
-        img.setImageResource(R.drawable.thorv2);
-        setContentView(img);
         setContentView(R.layout.activity_main);
+        View main = findViewById(R.id.mapview);
+        main.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                moveDestNode(event.getX(), event.getY());
+                Log.d("bla", "help");
+                return true;
+            }
+        });
     }
 
 
@@ -40,5 +49,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void moveDestNode(float x, float y) {
+        ImageView pin = (ImageView) findViewById(R.id.pinImage);
+        pin.setTop((int)y);
+        pin.setLeft((int)x);
     }
 }

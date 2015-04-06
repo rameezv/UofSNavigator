@@ -9,11 +9,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
+
 
 public class TouchImageView extends ImageView {
     Matrix matrix;
@@ -43,6 +41,8 @@ public class TouchImageView extends ImageView {
     ScaleGestureDetector mScaleDetector;
 
     Context context;
+
+
 
     public TouchImageView(Context context) {
         super(context);
@@ -300,4 +300,6 @@ public class TouchImageView extends ImageView {
         fixTrans();
 
     }
+
+
 }
