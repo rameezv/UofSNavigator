@@ -1,6 +1,8 @@
 package com.rameezvirji.uofsnavigator;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,13 +10,16 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    public final static String SPARAMS = "com.rameezvirji.uofsnavigator.searchparams";
+    public final static String SQUERY = "com.rameezvirji.uofsnavigator.searchquery";
+    public final static String CURRX = "com.rameezvirji.uofsnavigator.currx";
+    public final static String CURRY = "com.rameezvirji.uofsnavigator.curry";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +39,49 @@ public class MainActivity extends ActionBarActivity {
                 pin.setTop(((int)event.getY()-150));
                 pin.setLeft(((int)event.getX()-75));
                 return true;
+
             }
         });
 
         // Button to move up a floor
         final Button btnUp = (Button) findViewById(R.id.btnUp);
-        btnUp.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                map.setImageResource(R.drawable.thorv2);
+        btnUp.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    v.setBackgroundColor(0x33000000);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    v.setBackgroundColor(0x00000000);
+                    map.setImageResource(R.drawable.thorv2);
+                }
+                return true;
             }
         });
 
         // Button to move down a floor
         final Button btnDown = (Button) findViewById(R.id.btnDown);
-        btnDown.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                map.setImageResource(R.drawable.thorv1);
+        btnDown.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    v.setBackgroundColor(0x33000000);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    v.setBackgroundColor(0x00000000);
+                    map.setImageResource(R.drawable.thorv1);
+                }
+                return true;
             }
         });
 
         // Search Button
-        final Button btnSearch = (Button) findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                doSearch();
+        final ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch);
+        btnSearch.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    v.setBackgroundColor(0x33000000);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    v.setBackgroundColor(0x00000000);
+                    doSearch();
+                }
+                return true;
             }
         });
     }
@@ -89,7 +113,9 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, SearchResults.class);
         EditText searchQuery = (EditText) findViewById(R.id.txtSearch);
         String message = searchQuery.getText().toString();
-        intent.putExtra(SPARAMS, message);
+        intent.putExtra(SQUERY, message);
+        intent.putExtra(CURRX, 0f);
+        intent.putExtra(CURRY, 0f);
         startActivity(intent);
     }
 }
