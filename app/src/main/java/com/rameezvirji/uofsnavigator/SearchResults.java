@@ -24,7 +24,11 @@ public class SearchResults extends ActionBarActivity {
         Intent intent = getIntent();
         query = intent.getStringExtra(MainActivity.SPARAMS);
         final TextView qLabel = (TextView) findViewById(R.id.sQueryDisplay);
-        qLabel.setText(" Results for \"" + query + "\":");
+        if (query == "") {
+            qLabel.setText("All Results:");
+        } else {
+            qLabel.setText("Results for \"" + query + "\":");
+        }
         createArray();
         populateList();
     }
