@@ -1,14 +1,15 @@
 package com.rameezvirji.uofsnavigator;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.util.Log;
+import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,13 +18,36 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        View main = findViewById(R.id.mapview);
+
+        // Put the map into a variable and an integer to hold the floor
+        final ImageView map = (ImageView) findViewById(R.id.mapview);
+
+        // Map view
+        final View main = findViewById(R.id.mapview);
         main.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                moveDestNode(event.getX(), event.getY());
-                Log.d("OTL", "OTL fired");
+                ImageView pin = (ImageView) findViewById(R.id.pinImage);
+                pin.setVisibility(View.VISIBLE);
+                pin.setTop((int)event.getY());
+                pin.setLeft((int) event.getX());
                 return true;
+            }
+        });
+
+        // Button to move up a floor
+        final Button btnUp = (Button) findViewById(R.id.btnUp);
+        btnUp.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                map.setImageResource(R.drawable.thorv2);
+            }
+        });
+
+        // Button to move down a floor
+        final Button btnDown = (Button) findViewById(R.id.btnDown);
+        btnDown.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                map.setImageResource(R.drawable.thorv1);
             }
         });
     }
@@ -49,12 +73,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void moveDestNode(float x, float y) {
-        ImageView pin = (ImageView) findViewById(R.id.pinImage);
-        pin.setVisibility(View.VISIBLE);
-        pin.setTop((int)y);
-        pin.setLeft((int)x);
     }
 }
