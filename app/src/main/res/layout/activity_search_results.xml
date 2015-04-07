@@ -20,15 +20,18 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
         android:background="#ffdddddd"
-        android:focusable="true">
+        android:focusable="true"
+        android:layout_gravity="center_vertical">
 
         <TextView android:text="Query" android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:textColor="#ff2b2b2b"
 
             android:id="@+id/sQueryDisplay"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="2dp" />
 
     </LinearLayout>
 

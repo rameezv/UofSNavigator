@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -20,11 +21,15 @@ public class MainActivity extends ActionBarActivity {
     public final static String SQUERY = "com.rameezvirji.uofsnavigator.searchquery";
     public final static String CURRX = "com.rameezvirji.uofsnavigator.currx";
     public final static String CURRY = "com.rameezvirji.uofsnavigator.curry";
+    public final static String CURRF = "com.rameezvirji.uofsnavigator.currf";
+    public int floor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        floor = 1;
 
         // Put the map into a variable and an integer to hold the floor
         final ImageView map = (ImageView) findViewById(R.id.mapview);
@@ -52,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     v.setBackgroundColor(0x00000000);
                     map.setImageResource(R.drawable.thorv2);
+                    floor = 2;
                 }
                 return true;
             }
@@ -66,6 +72,7 @@ public class MainActivity extends ActionBarActivity {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     v.setBackgroundColor(0x00000000);
                     map.setImageResource(R.drawable.thorv1);
+                    floor = 1;
                 }
                 return true;
             }
@@ -103,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Toast.makeText(getApplicationContext(), "There's nothing to set!", Toast.LENGTH_LONG).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -114,8 +121,10 @@ public class MainActivity extends ActionBarActivity {
         EditText searchQuery = (EditText) findViewById(R.id.txtSearch);
         String message = searchQuery.getText().toString();
         intent.putExtra(SQUERY, message);
-        intent.putExtra(CURRX, 0f);
-        intent.putExtra(CURRY, 0f);
+        ImageView pin = (ImageView) findViewById(R.id.pinImage);
+        intent.putExtra(CURRX, pin.getLeft()+150);
+        intent.putExtra(CURRY, pin.getTop()+75);
+        intent.putExtra(CURRF, floor);
         startActivity(intent);
     }
 }

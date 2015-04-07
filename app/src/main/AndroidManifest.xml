@@ -20,6 +20,10 @@
             android:name=".SearchResults"
             android:label="@string/title_activity_search_results" >
         </activity>
+        <activity
+            android:name=".Directions"
+            android:label="@string/title_activity_directions" >
+        </activity>
     </application>
 
 </manifest>

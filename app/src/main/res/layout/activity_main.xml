@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:inputType="text"
             android:textIsSelectable="false"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:gravity="center_vertical"
             android:singleLine="true"
             android:paddingTop="10dp"
@@ -66,7 +66,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:src="@drawable/thorv1"
-            android:id="@+id/mapview" />
+            android:id="@+id/mapview"
+            android:padding="0dp" />
         <!--class="com.rameezvirji.uofsnavigator.TouchImageView"-->
 
         <ImageView
@@ -76,7 +77,8 @@
             android:id="@+id/pinImage"
             android:scaleType="matrix"
             android:visibility="invisible"
-            android:contentDescription="Map" />
+            android:contentDescription="Map"
+            android:padding="0dp" />
 
     </RelativeLayout>
     <LinearLayout
